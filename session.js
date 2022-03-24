@@ -452,7 +452,7 @@ async function recover_password(params){
         if(response.status==="success"){
             message({
                 title:"Success",
-                message:"Rassword reset. You are now logged in",
+                message:"Password reset. You are now logged in",
                 seconds:3
             })
             build_menu(authenticated_menu)
@@ -468,6 +468,7 @@ async function recover_password(params){
 
     }else if(params.mode==="initiate_password_reset"){
         // user is  initiating a request
+        console.log (params);
         response = await post_data(params)
         
         if(response.status==="success"){
