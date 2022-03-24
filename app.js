@@ -1,4 +1,4 @@
-
+// test code change
 //gas project /apps/brookers/system 
 //This global variable is set to contain the information needed to make a request of the Google App Script server.
 const gas_end_point = 'https://script.google.com/macros/s/'+gas_deployment_id()+'/exec'
@@ -73,7 +73,7 @@ function show_home(){
     tag("canvas").innerHTML=` 
     <div class="center-screen">
     
-    <p><img height="${window.innerHeight * .6}" src="https://www.brookersicecream.com/wp-content/uploads/2018/08/brookers-logo-final-large.png"></p>
+    <p><img height="${window.innerHeight * .6}" src="https://iconape.com/wp-content/files/zu/190423/png/utah-valley-university-uvu-logo.png"></p>
     <div style="text-align:center"></div>
     
     
