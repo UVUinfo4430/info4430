@@ -1,5 +1,4 @@
-//changed this file and testing pushing 
-// more changes here
+// test code change
 //gas project /apps/brookers/system 
 //This global variable is set to contain the information needed to make a request of the Google App Script server.
 const gas_end_point = 'https://script.google.com/macros/s/'+gas_deployment_id()+'/exec'

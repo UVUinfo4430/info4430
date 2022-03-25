@@ -1,0 +1,60 @@
+body {
+	font-family: Cambria, Garamond, serif;
+	background-color: #f5f3da;
+	color: black;
+	font-size: 12pt;
+}
+
+.button {
+    background-color:#FFE6BF; 
+    padding: 1px	1px	1px	1px ;
+    text-align: center;
+    display:inline-block;
+    font-size: 24px;
+    border-radius: 15px;
+    color:black;
+    font-family:'Sex&Candy';
+    width:150px;
+  }
+
+.table {
+    padding: 0;
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    color: black;
+    }
+.tableHeaderRow {
+    color: darkgreen;
+    font-weight: bold;
+    height: 50px;
+}
+.tableBodyRow:nth-child(odd){
+    background-color: rgba(178, 89, 201, 0.05);
+}
+#latestUserScore {
+background-color: crimson;
+}
+.tableBodyRow:hover{
+background-color: rgb(16, 204, 63);
+}
+.table tr td {
+height: 25px;
+}
+.user{
+    color: black;
+    border: 5px ridge green;
+    padding: 15px;
+    text-align: left;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+div:not(:first-child):not(:last-child) {
+margin-top: 15px;
+margin-bottom: 15px;
+}
+
+
+

@@ -30,7 +30,7 @@ async function post_data(payload){
     }
     //the response from google app script is returned.
     return response
-}
+} 
 
 
 async function initialize_app(){
