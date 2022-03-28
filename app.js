@@ -42,6 +42,7 @@ const authenticated_menu=[
         {label:"Request Time Off",function:"navigate({fn:'request_time_off'})"}, 
         {label:"My Requests",function:"navigate({fn:'show_time_off'})"}, 
     ]},
+
     //This menu item allows the user to add additional users. Note the "roles" property of the object. Only users with the role of "manager", "owner", or "administrator" will see this menu item. User roles are not heirachical. All user types you wish to see a menu item must be listed in the elements of the array.
     {label:"Add Employee",function:"navigate({fn:'create_account'})", roles:["manager","owner","administrator"]}, 
     //This menu item adds the menu item for updating an inventory count. Notice how a parameter is passed to the "ice_cream_inventory" function
