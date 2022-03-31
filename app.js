@@ -50,10 +50,20 @@ const authenticated_menu=[
     //the remaining menu items are added
     {label:"Ice Cream Inventory Summary",home:"Inventory",function:"navigate({fn:'ice_cream_inventory',params:{style:'summary'}})", roles:["owner","administrator"]},
     {label:"Employee List",function:"navigate({fn:'employee_list'})"},
-    {label:"Admin Tools",id:"menu2", roles:["manager","owner","administrator"], menu:[
-        {label:"Update User",function:"update_user()",panel:"update_user"},
-        {label:"Archive Inventory",function:"navigate({fn:'archive_inventory'})"},
-    ]},
+    {
+        label: "Admin Tools", id: "menu2", roles: ["manager", "owner", "administrator"], menu:[
+        { label: "Update User", function: "update_user()", panel: "update_user" },
+        { label: "Student Information", function: "navigate({fn:'admin_data'})", roles: ["manager", "owner", "administrator"] },
+    ]
+    },
+    {
+        label: "Student Tools", id: "menu2", roles: ["student"], menu: [
+        ]
+    },
+    {
+        label: "Preceptor Tools", id: "menu2", roles: ["preceptor"], menu: [
+        ]
+    }
 
 ]
 
