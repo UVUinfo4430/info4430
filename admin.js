@@ -1,5 +1,4 @@
 async function admin_data(params) {
-    if (!user_has_role(["owner", "manager", "administrator"])) { show_home(); return }
     const panel = tag("view_admin_panel")
     hide_menu()
 
@@ -7,12 +6,9 @@ async function admin_data(params) {
         tag("canvas").innerHTML = ` 
         <div class="page">
             <h2>Please Select The Student That You Would Like To View.</h2>
-            <div id="create_account_panel"></div>
         </div>
         `
-        if (panel.innerHTML === "") {
-            panel.style.display = "block"
-            const html = [`
+        const html = [`
             <form>
                 First Name: <input placeholder="Name" name="first_name" id="1234">
                 Last Name: <input placeholder="Name" name="last_name"><br>
@@ -20,18 +16,14 @@ async function admin_data(params) {
                 Type: <select name="type">
                 <option value="" selected></option>
                 `]
-            html.push(`<option value="student">Student</option>`)
-            html.push(`</select><br><br>
+        html.push(`<option value="student">Student</option>`)
+        html.push(`</select><br><br>
                     <input type="hidden" name="mode" value="get_student_data">
-                    <! -- <input type="hidden" name="confirm" value="${location.href.split("?")[0]}"> -->
                     <button id="create_admin_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
                 </form>   
             `)
-            panel.innerHTML = html.join("")
-            tag("1234").focus()
-        } else {
-            toggle(panel)
-        }
+        panel.innerHTML = html.join("")
+        tag("1234").focus()
     } else if (params.button) {
         if (params.button === 'Search') {
             student_data = await post_data(params)
@@ -68,6 +60,11 @@ async function admin_data(params) {
                                 </tr>
                                 </table>
                             </div>
+                        <form>
+                            <input type="hidden" name="mode" value="email_alert">
+                            <button id="submit_button" type="button" onclick="admin_data(form_data(this,true))">Submit</button>
+                        </form>
+                         
                          </div>`
            } else {
                 tag("view_admin_panel").innerHTML = "Unable to get Data " + response.message
@@ -82,7 +79,8 @@ async function admin_data(params) {
                 })
            }
     } else {
-            console.log("invalid process:", params.button)
+           console.log("invalid process:")
+           tag("view_admin_panel").innerHTML = "Failure"
            }
 
 }
