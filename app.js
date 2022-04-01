@@ -99,6 +99,14 @@ async function show_locations(){
     tag("canvas").innerHTML=`<div class="center-screen"><iframe class="airtable-embed" src="https://airtable.com/embed/${airtable_object_id}?backgroundColor=cyan" frameborder="0" onmousewheel="" width="${width}" height="500" style="background-color: white; border: 1px solid #ccc;"></iframe></div>`
     hide_menu()
 }
+async function show_rotations(){
+    //This function demonstrates how to render a view that is created in Airtable. The list of locations is a view of the Store table in airtable. It is shared in Airtable. The ID of the share is all that is needed to display the share embedded in this webpage. Generally Airtable shared items are visible by anyone with the link or id, so any data that must be secured should not be rendered using this method. However, it is a quick and easy way to display data stored in airtable.
+    const airtable_object_id="shrwz1d1aExJUIbUo"
+    const width = 400
+    //here the HTML of the page is configured to display the shared view in airtable.
+    tag("canvas").innerHTML=`<div class="center-screen"><iframe class="airtable-embed" src="https://airtable.com/embed/${airtable_object_id}?backgroundColor=cyan" frameborder="0" onmousewheel="" width="${width}" height="500" style="background-color: white; border: 1px solid #ccc;"></iframe></div>`
+    hide_menu()
+}
 
 async function request_time_off(){
     //This is an example of embedding a data form that is created in Airtable. This form allows a user to make a "time off" request. This form is not secure. Anyone with the link or the id for the form can use it to enter data into Airtable. However, it is easy to build and share an Airtable form. 
@@ -737,4 +745,6 @@ async function employee_list(){
     }    
 
 }
-
+function isChecked(checkbox, sub1) {
+    document.getElementById(sub1).disabled = !checkbox.checked;
+}
