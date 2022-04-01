@@ -96,7 +96,6 @@ h2{
     background-repeat: no-repeat;
 }
 
-
 .inventory-table input {
     width:100%;
     border:none;
@@ -154,9 +153,7 @@ body {
 .tableBodyRow:nth-child(odd){
     background-color: rgba(178, 89, 201, 0.05);
 }
-#latestUserScore {
-background-color: crimson;
-}
+
 .tableBodyRow:hover{
 background-color: rgb(16, 204, 63);
 }
@@ -172,7 +169,26 @@ height: 25px;
     margin-left: auto;
     margin-right: 15px;
 }
-div:not(:first-child):not(:last-child) {
+.div:not(:first-child):not(:last-child) {
 margin-top: 15px;
 margin-bottom: 15px;
+}
+.cb {
+	width: 20px;
+	height: 20px;
+	float: center;
+	color: #000000;
+}
+
+.scroll{
+    height:300px;
+    width:auto;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;
+    overflow:auto;"
+}
+
+.right{
+    float: right
+    padding";
 }

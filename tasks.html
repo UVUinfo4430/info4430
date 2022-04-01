@@ -26,41 +26,51 @@
     </section>
     <div class="user" value = "get_user_name">Student Info </div>
     
- 
         
    <div class="user">Student Progress 
        <section>
-           [Rotation Title] &nbsp;
+           [Rotation Title];
        </section>
    </div>
       <div> 
           <button>Requirements to Pass Off</button>
         <div style="display:block;" >
-        
+
             <table class="table">
             <thead class="tableHead">
                 <tr class="tableHeaderRow">
                     <th>Rotation</th>
                     <th>Learning Outcome</th> 
-                    <th>Preceptor Signoff</th>
+                    <th>Complete</th>
                     <th>Date Completed</th>
+                    <th> </th>
                 </tr>
             </thead>
             <tbody class="table-Body"></tbody>
             <tr class="tableBodyRow">
                 <td>[Rotation Name]</td>
                 <td>[Task Description]</td>
-                <td>[MJG]</td>
-                <td>[3/8/2022]</td>
+                <td>[ ]</td>
+                <td>[ ]</td>
+                <td ><input  type="checkbox" id="termsChkbx" 
+                    onchange="isChecked(this, 'sub1')" class="cb" /></td>
             </tr>
             <tr class="tableBodyRow">
                 <td>[Rotation Name]</td>
                 <td>[Task Description]</td>
-                <td>[ ] </td>
                 <td>[ ]</td>
+                <td>[ ]</td>
+                <td ><input  type="checkbox" id="termsChkbx" 
+                    onchange="isChecked(this, 'sub1')" class="cb" /></td>
             </tr>
             </table>
-        </div>    
+        </div>  
+        <div>
+           
+            <div>
+                <input class="right" type="submit" name="submit" value="Submit" id="sub1" disabled="disabled" />
+            </div>
+        </div>  
      </div>  
     <script>
 
