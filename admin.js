@@ -141,5 +141,5 @@ async function mark_task_complete(params) {
     console.log('in mark_task_complete')
     payload = { mode: "mark_task_complete", id: params.id, name: params.name }
     const response = await post_data(payload)
-    show_task_list()
+    show_student_rotation()
 }
