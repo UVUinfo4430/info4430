@@ -2,13 +2,13 @@ html {zoom: 100%;}
 
 body{
     padding:0;
-    background-color: ivory;
+    background-color: white;
     text-align: left;
     min-width: 200px;
 }
 
 h1 {
-    color: maroon;
+    color: #275d38;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-size: 2rem;
     line-height: 2rem;
@@ -18,7 +18,7 @@ h1 {
 h2{
     margin-top:0;
     margin-bottom:.5rem;
-    color: maroon;
+    color: #275d38;
 }
 .center-screen {
     position: absolute;
@@ -29,7 +29,7 @@ h2{
     text-align: center;
 }
 #welcome{
-    background-color: rgba(255,255,255,0.8);
+    background-color: white;
     display:inline-block;
     margin:3rem;
     padding:1rem 2rem 1rem 2rem ;
@@ -37,12 +37,12 @@ h2{
 }
 
 .page{
-    background-color: Beige;
+    background-color: white;
     display:inline-block;
     padding:1rem;
     text-align: left;
     border-radius: 5px;
-    border: 2px lightgrey solid;
+    border: 2px #f9f9f9 solid;
 }
 
 #welcome p{
@@ -60,12 +60,12 @@ h2{
 }
 
 .tools{
-    color:grey;
+    color:#8e8c89;
     cursor:pointer;
 }
 
 .tools:hover{
-    color:green;
+    color:#6f937a;
 }
 
 .inventory-table{
@@ -115,12 +115,12 @@ h2{
     background-color: lightyellow;
 }
 .active{
-    background-color: white;
+    background-color: #f9f9f9;
 }
 
 body {
 	font-family: Cambria, Garamond, serif;
-	background-color: #f5f3da;
+	background-color: #f9f9f9;
 	color: black;
 	font-size: 12pt;
 }
@@ -133,7 +133,7 @@ body {
     font-size: 24px;
     border-radius: 15px;
     color:black;
-    font-family:'Sex&Candy';
+    font-family: Cambria, Garamond, serif;
     width:150px;
   }
 
@@ -146,7 +146,7 @@ body {
     color: black;
     }
 .tableHeaderRow {
-    color: darkgreen;
+    color: #275D38;
     font-weight: bold;
     height: 50px;
 }
@@ -155,14 +155,14 @@ body {
 }
 
 .tableBodyRow:hover{
-background-color: rgb(16, 204, 63);
+background-color: rgb(80, 148, 80);
 }
 .table tr td {
 height: 25px;
 }
 .user{
     color: black;
-    border: 5px ridge green;
+    border: 5px ridge #275D38;
     padding: 15px;
     text-align: left;
     border-radius: 15px;
@@ -184,11 +184,10 @@ margin-bottom: 15px;
     height:300px;
     width:auto;
     border:1px solid #ccc;
-    font:16px/26px Georgia, Garamond, Serif;
-    overflow:auto;"
+    font:16px/26px Cambria, Garamond, serif;
+    overflow:auto;
 }
 
 .right{
-    float: right
-    padding";
+    float: right;
 }
