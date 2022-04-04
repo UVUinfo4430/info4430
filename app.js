@@ -54,7 +54,7 @@ const authenticated_menu=[
     {
         label: "Admin Tools", id: "menu2", roles: ["manager", "owner", "administrator"], menu:[
         { label: "Update User", function: "update_user()", panel: "update_user" },
-        { label: "Student Information", function: "navigate({fn:'admin_data'})", roles: ["manager", "owner", "administrator"] },
+            { label: "Student Information", function: "navigate({fn:'show_student_rotation'})", roles: ["manager", "owner", "administrator"] },
     ]
     },
     {
