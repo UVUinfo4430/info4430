@@ -1,10 +1,13 @@
 html {zoom: 100%;}
 
 body{
-    padding:0;
-    background-color: white;
+    font-family: Cambria, Garamond, serif;
+    padding:10;
+    background-color:  #e8e8e8;
     text-align: left;
+    color: black;
     min-width: 200px;
+    font-size: 12pt;
 }
 
 h1 {
@@ -29,7 +32,7 @@ h2{
     text-align: center;
 }
 #welcome{
-    background-color: white;
+    background-color:  #e8e8e8;
     display:inline-block;
     margin:3rem;
     padding:1rem 2rem 1rem 2rem ;
@@ -37,12 +40,12 @@ h2{
 }
 
 .page{
-    background-color: white;
+    background-color:  #e8e8e8;
     display:inline-block;
     padding:1rem;
     text-align: left;
     border-radius: 5px;
-    border: 2px #f9f9f9 solid;
+    border: 2px  #e8e8e8 solid;
 }
 
 #welcome p{
@@ -115,26 +118,19 @@ h2{
     background-color: lightyellow;
 }
 .active{
-    background-color: #f9f9f9;
-}
-
-body {
-	font-family: Cambria, Garamond, serif;
-	background-color: #f9f9f9;
-	color: black;
-	font-size: 12pt;
+    background-color:  #e8e8e8;
 }
 
 .button {
-    background-color:#FFE6BF; 
-    padding: 1px	1px	1px	1px ;
+    background-color:#275d38; 
+    padding: 5px 5px	5px	5px ;
     text-align: center;
     display:inline-block;
     font-size: 24px;
     border-radius: 15px;
-    color:black;
+    color:white;
     font-family: Cambria, Garamond, serif;
-    width:150px;
+    width:200px;
   }
 
 .table {
