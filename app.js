@@ -236,9 +236,12 @@ async function show_task_list(){
                 <button class="button">Calendar</button>
                 <button class="button">Requirements</button>
             </section>
-                <div id="task-title" style="text-align:center"><h2>Rotation</h2></div>
+                <div id="task-title" style="text-align:center"><h2>Student Progress</h2></div>
                 <div id="task-title" style="text-align:center">
-                    <div class="user" value = "get_user_name">Student Info </div></div>
+                    <div class="user">
+                        <div value = "get_user_name">Student Info </div>
+                        <div>Current Rotation: </div>
+                    </div>
                 <div id="task-message" style="width:100%"></div>
                 <div id="task_panel" style="width:100%"></div>
                 
@@ -259,11 +262,13 @@ async function show_task_list(){
      
         header.push(`<th>Completed</th>`)
         header.push(`<th>Change</th>`)
+        header.push('<th> </th>')
+        header.push('<th>')
         header.push("</tr>")
         const html=[header.join("")]
         
         for(record of response.task_list){
-        //add a new table row to the table for each flavor
+        //add a new table row to the table for each task
         html.push("<tr>")
         //insert the task description
         html.push(`<td>${record.fields.Name}</td>`)
@@ -272,6 +277,7 @@ async function show_task_list(){
         if(record.fields.Completed==='No'){
         html.push(`<td><a class="tools" onclick="mark_task_complete({id:'${record.id}', name:'${record.fields.Name}'})">Mark as Completed</a></td>`)
         }
+        html.push(`<td align='center'>${record.fields.Done}</td>`)
         html.push("</tr>")
         }
         
@@ -293,7 +299,7 @@ async function show_student_rotation() {
 
     //First we hide the menu
     hide_menu()
-    console.log('at show_studentrotation.')
+    console.log('at show_student_rotation.')
 
     //building the HTML shell
     tag("canvas").innerHTML = `
@@ -305,7 +311,7 @@ async function show_student_rotation() {
     </div>
     `
     //get the data from airtable through google apps script
-    const params = { mode: "get_studentrotation", filter: "" }
+    const params = { mode: "get_student_rotation", filter: "" }
     console.log('params', params)
 
     let response = await post_data(params)
@@ -317,12 +323,12 @@ async function show_student_rotation() {
     <tr>
     <th>Rotations</th>
     `]
-    header.push(`<th>Roatation</th>`)
+    header.push(`<th>Rotation</th>`)
     header.push(`<th>Change</th>`)
     header.push("</tr>")
     const html = [header.join("")]
 
-    for (record of response.student_rotations) {
+    for (record of response.student_rotation) {
         //add a new table row to the table for each flavor
         html.push("<tr>")
         //insert the task description
