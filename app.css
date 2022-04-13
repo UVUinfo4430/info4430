@@ -3,7 +3,7 @@ html {zoom: 100%;}
 body{
     font-family: Cambria, Garamond, serif;
     padding:10;
-    background-color:  #e8e8e8;
+    background-color:  #fff8e6;
     text-align: left;
     color: black;
     min-width: 200px;
@@ -32,7 +32,7 @@ h2{
     text-align: center;
 }
 #welcome{
-    background-color:  #e8e8e8;
+    background-color:  #fff8e6;
     display:inline-block;
     margin:3rem;
     padding:1rem 2rem 1rem 2rem ;
@@ -40,12 +40,12 @@ h2{
 }
 
 .page{
-    background-color:  #e8e8e8;
+    background-color:  #fff8e6;
     display:inline-block;
     padding:1rem;
     text-align: left;
     border-radius: 5px;
-    border: 2px  #e8e8e8 solid;
+    border: 2px  #fff8e6 solid;
 }
 
 #welcome p{
@@ -118,7 +118,7 @@ h2{
     background-color: lightyellow;
 }
 .active{
-    background-color:  #e8e8e8;
+    background-color:  #fff8e6;
 }
 
 .button {
@@ -145,6 +145,7 @@ h2{
     color: #275D38;
     font-weight: bold;
     height: 50px;
+    background-color: #fbd865;
 }
 .tableBodyRow:nth-child(odd){
     background-color: rgba(178, 89, 201, 0.05);
