@@ -277,7 +277,7 @@ async function show_task_list(){
         if(record.fields.Completed==='No'){
         html.push(`<td><a class="tools" onclick="mark_task_complete({id:'${record.id}', name:'${record.fields.Name}'})">Mark as Completed</a></td>`)
         }
-        html.push(`<td align='center'>${record.fields.Done}</td>`)
+       
         html.push("</tr>")
         }
         
