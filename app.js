@@ -46,7 +46,7 @@ const authenticated_menu=[
     {
         label: "Admin Tools", id: "menu2", roles: ["manager", "owner", "administrator"], menu:[
         { label: "Update User", function: "update_user()", panel: "update_user" },
-            { label: "Student Information", function: "navigate({fn:'admin_data'})", roles: ["manager", "owner", "administrator"] },
+            { label: "Student Information", function: "navigate({fn:'show_student_rotation'})", roles: ["manager", "owner", "administrator"] },
     ]
     },
     {
@@ -352,86 +352,3 @@ async function mark_rotation_complete(params) {
     const response = await post_data(payload)
     show_student_rotation()
 }
-
-async function admin_data(params) {
-    const panel = tag("view_admin_panel")
-    hide_menu()
-
-    if (!params) {
-        tag("canvas").innerHTML = ` 
-        <div class="page">
-            <h2>Please Search For The Student That You Would Like To View.</h2>
-        </div>
-        `
-        const html = [`
-            <form>
-                First Name: <input placeholder="Name" name="first_name" value=" "><br>
-                Last Name: <input placeholder="Name" name="last_name" value=" "><br>
-                Student ID: <input placeholder="ID" name="id" value=" "><br>
-                `]
-        html.push(`
-                    <input type="hidden" name="mode" value="get_student_data">
-                    <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
-                </form>   
-            `)
-        panel.innerHTML = html.join("")
-    } else if (params.button) {
-        if (params.button === 'Search') {
-            let student_data = await post_data(params)
-            payload = { mode: "get_student_rotations", id: student_data.student_data.fields.id}
-            let rotation_data = await post_data(payload)
-            console.log("response in get_student_data", student_data)
-           if (response.status === "success") {
-                panel.innerHTML = `
-                <div class="user">Student Details<br>
-                Student ID: ${params.id}
-                Name: ${params.last_name}, ${params.first_name}<br></div>
-
-                <div class="user">Student Progression<br>
-                </div>`
-
-                const header = [`
-                <table>
-                <tr>
-                <th>Rotation Schedule</th>
-                `]
-                header.push(`<th>Roatation</th>`)
-                header.push(`<th>Preceptor</th>`)
-                header.push(`<th>Start Date</th>`)
-                header.push(`<th>End Date</th>`)
-                header.push("</tr>")
-                const html = [header.join("")]
-
-                for (record of rotation_data.rotation_data) {
-                    //add a new table row to the table for each flavor
-                    html.push("<tr>")
-                    //insert the task description
-                    html.push(`<td>${record.fields.Name}</td>`)
-                    //Insert the status of the task
-                    html.push(`<td align='center'>${record.fields.Specialities}</td>`)
-                    html.push(`<td align='center'>${record.fields.Preceptor}</td>`)
-                    html.push(`<td align='center'>${record.fields.Rotation_Start}</td>`)
-                    html.push(`<td align='center'>${record.fields.Rotation_End}</td>`)
-                    html.push("</tr>")
-                }
-
-                html.push("</table>")
-                tag("admin_panel").innerHTML = html.join("")
-            } else {
-                tag("view_admin_panel").innerHTML = "Unable to get Data " + response.message
-            }
-        } else {
-            message({
-                title: "Confirmation Failure",
-                message: `Failed to confirm account: ${response.message}`,
-                kind: "error",
-                seconds: 5
-            })
-        }
-    } else {
-        console.log("invalid process:")
-        tag("view_admin_panel").innerHTML = "Failure"
-    }
-
-}
-
