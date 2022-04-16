@@ -262,7 +262,7 @@ async function show_task_list(){
      
         header.push(`<th>Completed</th>`)
         header.push(`<th>Change</th>`)
-        header.push('<th> </th>')
+      
         header.push('<th>')
         header.push("</tr>")
         const html=[header.join("")]
