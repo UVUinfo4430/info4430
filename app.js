@@ -366,7 +366,8 @@ async function admin_data(params) {
                     <input type="hidden" name="mode" value="get_student_data">
                     <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
             `)
-        tag("view_admin_panel").innerHTML = html.join("</form>")
+        html.push("</form>")
+        tag("view_admin_panel").innerHTML = html.join("")
     } else if (params.button) {
         if (params.button === 'Search') {
             let student_data = await post_data(params)
