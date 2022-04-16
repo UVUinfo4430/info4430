@@ -348,7 +348,6 @@ async function mark_rotation_complete(params) {
 }
 
 async function admin_data(params) {
-    const panel = tag("view_admin_panel")
     hide_menu()
 
     if (!params) {
@@ -366,9 +365,8 @@ async function admin_data(params) {
         html.push(`
                     <input type="hidden" name="mode" value="get_student_data">
                     <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
-                </form>   
             `)
-        panel.innerHTML = html.join("")
+        tag("view_admin_panel").innerHTML = html.join("</form>")
     } else if (params.button) {
         if (params.button === 'Search') {
             let student_data = await post_data(params)
@@ -376,7 +374,7 @@ async function admin_data(params) {
             let rotation_data = await post_data(payload)
             console.log("response in get_student_data", student_data)
            if (response.status === "success") {
-                panel.innerHTML = `
+               tag("view_admin_panel").innerHTML = `
                 <div class="user">Student Details<br>
                 Student ID: ${params.id}
                 Name: ${params.last_name}, ${params.first_name}<br></div>
@@ -410,7 +408,7 @@ async function admin_data(params) {
                 }
 
                 html.push("</table>")
-                tag("admin_panel").innerHTML = html.join("")
+                tag("view_admin_panel").innerHTML = html.join("")
             } else {
                 tag("view_admin_panel").innerHTML = "Unable to get Data " + response.message
             }
