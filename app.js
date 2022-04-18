@@ -357,9 +357,8 @@ async function admin_data(params) {
             <h2>Please Search For The Student That You Would Like To View.</h2>
         </div>
         `
-    
-        panel.style.display = "block"
         panel.innerHTML = `
+        <div class="page">
             <form>
                 First Name: <input placeholder="Name" name="first_name" value=" "><br>
                 Last Name: <input placeholder="Name" name="last_name" value=" "><br>
@@ -367,6 +366,7 @@ async function admin_data(params) {
                 <input type="hidden" name="mode" value="get_student_data">
                 <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
             </form>
+        </div>
             `
     } else if (params.button) {
         if (params.button === 'Search') {
@@ -386,6 +386,14 @@ async function admin_data(params) {
 
                 <div class="user">Student Progression<br>
                 </div>`
+
+               let today = new Date().toLocaleDateString()
+
+               for (record of rotation_data.rotation_data) {
+                   if (record.fields.Rotation_End >= today) {
+                       html.push(`<td><a class="tools" onclick="mark_rotation_complete({id:'${record.id}', name:'${record.fields.Name}'})">Mark as Completed</a></td>`)
+                   }
+               }
 
                 const header = [`
                 <table>
