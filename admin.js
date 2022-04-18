@@ -22,8 +22,14 @@ async function admin_data(params) {
                     <button id="create_admin_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
                 </form>   
             `)
-        panel.innerHTML = html.join("")
-        tag("1234").focus()
+        panel.innerHTML = `
+            <form>
+                First Name: <input placeholder="Name" name="first_name" id="1234">
+                Last Name: <input placeholder="Name" name="last_name"><br>
+                ID: <input placeholder="ID" name="ID"><br>
+                <input type="hidden" name="mode" value="get_student_data">
+                <button id="create_admin_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
+                </form>`
     } else if (params.button) {
         if (params.button === 'Search') {
             student_data = await post_data(params)
