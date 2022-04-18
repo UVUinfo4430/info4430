@@ -356,18 +356,15 @@ async function admin_data(params) {
             <h2>Please Search For The Student That You Would Like To View.</h2>
         </div>
         `
-        const html = [`
+        tag("view_admin_panel").innerHTML = `
             <form>
                 First Name: <input placeholder="Name" name="first_name" value=" "><br>
                 Last Name: <input placeholder="Name" name="last_name" value=" "><br>
                 Student ID: <input placeholder="ID" name="id" value=" "><br>
-                `]
-        html.push(`
-                    <input type="hidden" name="mode" value="get_student_data">
-                    <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
-            `)
-        html.push("</form>")
-        tag("view_admin_panel").innerHTML = html.join("")
+                <input type="hidden" name="mode" value="get_student_data">
+                <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
+            </form>
+            `
     } else if (params.button) {
         if (params.button === 'Search') {
             let student_data = await post_data(params)
