@@ -349,6 +349,7 @@ async function mark_rotation_complete(params) {
 
 async function admin_data(params) {
     hide_menu()
+    const panel = tag("view_admin_panel")
 
     if (!params) {
         tag("canvas").innerHTML = ` 
@@ -356,7 +357,9 @@ async function admin_data(params) {
             <h2>Please Search For The Student That You Would Like To View.</h2>
         </div>
         `
-        tag("view_admin_panel").innerHTML = `
+    
+        panel.style.display = "block"
+        panel.innerHTML = `
             <form>
                 First Name: <input placeholder="Name" name="first_name" value=" "><br>
                 Last Name: <input placeholder="Name" name="last_name" value=" "><br>
@@ -375,7 +378,11 @@ async function admin_data(params) {
                tag("view_admin_panel").innerHTML = `
                 <div class="user">Student Details<br>
                 Student ID: ${params.id}
-                Name: ${params.last_name}, ${params.first_name}<br></div>
+                Name: ${params.last_name}, ${params.first_name}<br>
+                Degree: Graduate
+                Class Level: Graduate
+                Program: Physicians Assistant
+                Student Email: ${student_data.student_data.fields.email}</div>
 
                 <div class="user">Student Progression<br>
                 </div>`
