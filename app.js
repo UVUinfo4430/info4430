@@ -356,18 +356,16 @@ async function admin_data(params) {
         <div class="page">
             <h2>Please Search For The Student That You Would Like To View.</h2>
         </div>
-        `
-        panel.innerHTML = `
-        <div class="page">
             <form>
-                First Name: <input placeholder="Name" name="first_name" value=" "><br>
-                Last Name: <input placeholder="Name" name="last_name" value=" "><br>
-                Student ID: <input placeholder="ID" name="id" value=" "><br>
+                First Name: <input placeholder="Name" name="first_name" value=" ">
+                Last Name: <input placeholder="Name" name="last_name" value=" ">
+                Student ID: <input placeholder="ID" name="id" value=" ">
                 <input type="hidden" name="mode" value="get_student_data">
                 <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
             </form>
         </div>
-            `
+        `
+        
     } else if (params.button) {
         if (params.button === 'Search') {
             let student_data = await post_data(params)
@@ -382,18 +380,33 @@ async function admin_data(params) {
                 Degree: Graduate
                 Class Level: Graduate
                 Program: Physicians Assistant
-                Student Email: ${student_data.student_data.fields.email}</div>
-
-                <div class="user">Student Progression<br>
-                </div>`
+                Student Email: ${student_data.student_data.fields.email}</div>`
 
                let today = new Date().toLocaleDateString()
+               const progession = [`
+                <table>
+                <tr>
+                <th>Student Progression</th>
+                `]
+               progession.push(`<th>Roatation</th>`)
+               progession.push(`<th>Preceptor</th>`)
+               progession.push(`<th>Start Date</th>`)
+               progession.push(`<th>End Date</th>`)
+               progession.push("</tr>")
+               const tables = [progession.join("")]
 
                for (record of rotation_data.rotation_data) {
                    if (record.fields.Rotation_End >= today) {
-                       html.push(`<td><a class="tools" onclick="mark_rotation_complete({id:'${record.id}', name:'${record.fields.Name}'})">Mark as Completed</a></td>`)
+                       //add a new table row to the table for each flavor
+                       tables.push("<tr>")
+                       //insert the task description
+                       tables.push(`<td> ${record.fields.Specialities}</td>`)
+                       tables.push("</tr>")
                    }
                }
+
+               html.push("</table>")
+               tag("view_admin_panel").innerHTML = tables.join("")
 
                 const header = [`
                 <table>
