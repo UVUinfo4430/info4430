@@ -393,7 +393,8 @@ async function admin_data(params) {
                 Program: Physicians Assistant &emsp;
                 Student Email: ${response.student_data[0].fields.Email}</div>`
 
-               let today = new Date().toLocaleDateString()
+               let today = new Date().toISOString().slice(0, 10);
+               console.log("today", today, rotation_data.student_data[0].fields.Rotation_End, )
                const progression = [`<div class="user">
                <h4>Student Progression</h4>
                 `]
