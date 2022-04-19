@@ -361,88 +361,82 @@ async function admin_data(params) {
         tag("canvas").innerHTML = ` 
         <div class="page">
             <h2>Please Search For The Student That You Would Like To View.</h2>
-        </div>
+        <div id="form">
             <form>
-                First Name: <input placeholder="Name" name="first_name" value=" ">
-                Last Name: <input placeholder="Name" name="last_name" value=" ">
-                Student ID: <input placeholder="ID" name="id" value=" ">
+                First Name: <input placeholder="Name" name="first_name" value="">
+                Last Name: <input placeholder="Name" name="last_name" value="">
+                Student ID: <input placeholder="ID" name="id" value="">
                 <input type="hidden" name="mode" value="get_student_data">
                 <button id="get_student_button" type="button" onclick="admin_data(form_data(this,true))">Search</button>
             </form>
+        </div>
+        <div id="task-message" style="width:100%"></div>
+        <div id="rotation_panel" style="width:100%"></div>
+        <div id="admin_panel" style="width:100%"></div>
         </div>
         `
         
     } else if (params.button) {
         if (params.button === 'Search') {
-            let student_data = await post_data(params)
-            payload = { mode: "get_student_rotations", id: student_data.student_data.fields.id}
+            let response = await post_data(params)
+            console.log("student data", response.student_data[0])
+            payload = { mode: "get_student_rotations", id: response.student_data[0].fields.id}
             let rotation_data = await post_data(payload)
-            console.log("response in get_student_data", student_data)
+            console.log("response roation data", rotation_data)
            if (response.status === "success") {
-               tag("view_admin_panel").innerHTML = `
-                <div class="user">Student Details<br>
-                Student ID: ${params.id}
-                Name: ${params.last_name}, ${params.first_name}<br>
-                Degree: Graduate
-                Class Level: Graduate
-                Program: Physicians Assistant
-                Student Email: ${student_data.student_data.fields.email}</div>`
+               tag("task-message").innerHTML = `
+                <div class="user"><h4>Student Details</h4>
+                Student ID: ${response.student_data[0].fields.id} &emsp;
+                Name: ${response.student_data[0].fields.last_name}, ${response.student_data[0].fields.first_name}<br>
+                Degree: Graduate &emsp;
+                Class Level: Graduate &emsp;
+                Program: Physicians Assistant &emsp;
+                Student Email: ${response.student_data[0].fields.Email}</div>`
 
                let today = new Date().toLocaleDateString()
-               const progession = [`
-                <table>
-                <tr>
-                <th>Student Progression</th>
+               const progression = [`<div class="user">
+               <h4>Student Progression</h4>
                 `]
-               progession.push(`<th>Roatation</th>`)
-               progession.push(`<th>Preceptor</th>`)
-               progession.push(`<th>Start Date</th>`)
-               progession.push(`<th>End Date</th>`)
-               progession.push("</tr>")
-               const tables = [progession.join("")]
 
-               for (record of rotation_data.rotation_data) {
+               for (record of rotation_data.student_data) {
                    if (record.fields.Rotation_End >= today) {
-                       //add a new table row to the table for each flavor
-                       tables.push("<tr>")
-                       //insert the task description
-                       tables.push(`<td> ${record.fields.Specialities}</td>`)
-                       tables.push("</tr>")
+                       
+                    progression.push(`<img height="11" src="https://iconape.com/wp-content/png_logo_vector/checkbox-checked.png">&nbsp;${record.fields.specialty_id}&emsp;`)
+                   }
+                   else{
+                    progression.push(`<img height="11" src="https://iconape.com/wp-content/png_logo_vector/checkbox-unchecked.png">&nbsp;${record.fields.specialty_id}&emsp;`)
                    }
                }
-
-               html.push("</table>")
-               tag("view_admin_panel").innerHTML = tables.join("")
+               progression.push(`</div>`)
+               tag("rotation_panel").innerHTML = progression.join("")
 
                 const header = [`
-                <table>
+                <div class="user">
+                <h4>Rotation Schedule</h4>
+                <table style="width:100%">
                 <tr>
-                <th>Rotation Schedule</th>
+                <th>Rotation</th>
                 `]
-                header.push(`<th>Roatation</th>`)
                 header.push(`<th>Preceptor</th>`)
                 header.push(`<th>Start Date</th>`)
                 header.push(`<th>End Date</th>`)
                 header.push("</tr>")
                 const html = [header.join("")]
 
-                for (record of rotation_data.rotation_data) {
+                for (record of rotation_data.student_data) {
                     //add a new table row to the table for each flavor
                     html.push("<tr>")
-                    //insert the task description
-                    html.push(`<td>${record.fields.Name}</td>`)
-                    //Insert the status of the task
-                    html.push(`<td align='center'>${record.fields.Specialities}</td>`)
-                    html.push(`<td align='center'>${record.fields.Preceptor}</td>`)
+                    html.push(`<td align='center'>${record.fields.specialty_id}</td>`)
+                    html.push(`<td align='center'>${record.fields.PreceptorID}</td>`)
                     html.push(`<td align='center'>${record.fields.Rotation_Start}</td>`)
                     html.push(`<td align='center'>${record.fields.Rotation_End}</td>`)
                     html.push("</tr>")
                 }
 
-                html.push("</table>")
-                tag("view_admin_panel").innerHTML = html.join("")
+                html.push("</table></div>")
+                tag("admin_panel").innerHTML = html.join("")
             } else {
-                tag("view_admin_panel").innerHTML = "Unable to get Data " + response.message
+                tag("admin_panel").innerHTML = "Unable to get Data " + response.message
             }
         } else {
             message({
