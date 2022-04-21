@@ -4,7 +4,7 @@ body{
     font-family: Cambria, Garamond, serif;
     padding:10;
     background-color:  #fff8e6;
-    text-align: left;
+    text-align: center;
     color: black;
     min-width: 200px;
     font-size: 12pt;
@@ -23,14 +23,7 @@ h2{
     margin-bottom:.5rem;
     color: #275d38;
 }
-.center-screen {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
+
 #welcome{
     background-color:  #fff8e6;
     display:inline-block;
@@ -39,6 +32,14 @@ h2{
     text-align: left;
 }
 
+section{
+    background-color:  #fff8e6;
+    display:inline-block;
+    padding:1rem;
+    text-align: left;
+    border-radius: 5px;
+    border: 2px  #fff8e6 solid;
+}
 .page{
     background-color:  #fff8e6;
     display:inline-block;
@@ -71,25 +72,22 @@ h2{
     color:#6f937a;
 }
 
-.inventory-table{
-    background-color: lightgrey;
+table{
+    background-color: #fff8e6;
 
 }
 
-
-.inventory-table th {
-    color: maroon;
+ th {
+    color: black;
     background-color: lightyellow;
     margin:1px;
     padding: 4px 8px 4px 8px;
 }
-.inventory-table td {
+ td {
     color: black;
     margin:1px;
     padding: 4px 8px 4px 8px;
-    white-space: nowrap;
-    text-align: right;
-
+    text-align: left;
 }
 
 .working{
@@ -97,18 +95,6 @@ h2{
     background-position: left;
     background-size: 20px;
     background-repeat: no-repeat;
-}
-
-.inventory-table input {
-    width:100%;
-    border:none;
-    text-align: right;
-    background-color: transparent;
-}
-
-.sticky{
-    position:sticky;
-    top:0;
 }
 
 .hidden{
@@ -131,9 +117,10 @@ h2{
     color:white;
     font-family: Cambria, Garamond, serif;
     width:200px;
+    margin: auto;
   }
 
-.table {
+table {
     padding: 0;
     margin: auto;
     border-collapse: collapse;
@@ -141,21 +128,23 @@ h2{
     text-align: center;
     color: black;
     }
-.tableHeaderRow {
-    color: #275D38;
-    font-weight: bold;
-    height: 50px;
-    background-color: #fbd865;
-}
+
 .tableBodyRow:nth-child(odd){
     background-color: rgba(178, 89, 201, 0.05);
 }
-
+th{
+    color: white;
+    background-color :#275d38; 
+    font-weight: bold;
+    height: 50px;
+    padding: 15px;
+    margin-top: 50px;
+}
 .tableBodyRow:hover{
 background-color: rgb(80, 148, 80);
 }
-.table tr td {
-height: 25px;
+.center-text {
+    text-align: center;
 }
 .user{
     color: black;
@@ -164,27 +153,10 @@ height: 25px;
     text-align: left;
     border-radius: 15px;
     margin-left: auto;
-    margin-right: 15px;
+    margin-right: auto;
+    width: 80%;
 }
-.div:not(:first-child):not(:last-child) {
+div:not(:first-child):not(:last-child) {
 margin-top: 15px;
 margin-bottom: 15px;
-}
-.cb {
-	width: 20px;
-	height: 20px;
-	float: center;
-	color: #000000;
-}
-
-.scroll{
-    height:300px;
-    width:auto;
-    border:1px solid #ccc;
-    font:16px/26px Cambria, Garamond, serif;
-    overflow:auto;
-}
-
-.right{
-    float: right;
 }

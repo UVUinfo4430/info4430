@@ -46,7 +46,7 @@ const authenticated_menu=[
     {
         label: "Admin Tools", id: "menu2", roles: ["manager", "owner", "administrator"], menu:[
         { label: "Update User", function: "update_user()", panel: "update_user" },
-            { label: "Student Information", function: "navigate({fn:'admin_data'})", roles: ["manager", "owner", "administrator"] },
+            { label: "Student Information", function: "navigate({fn:'show_student_rotation'})", roles: ["manager", "owner", "administrator"] },
     ]
     },
     {
@@ -262,7 +262,7 @@ async function show_task_list(){
      
         header.push(`<th>Completed</th>`)
         header.push(`<th>Change</th>`)
-        header.push('<th> </th>')
+      
         header.push('<th>')
         header.push("</tr>")
         const html=[header.join("")]
@@ -277,7 +277,7 @@ async function show_task_list(){
         if(record.fields.Completed==='No'){
         html.push(`<td><a class="tools" onclick="mark_task_complete({id:'${record.id}', name:'${record.fields.Name}'})">Mark as Completed</a></td>`)
         }
-        html.push(`<td align='center'>${record.fields.Done}</td>`)
+       
         html.push("</tr>")
         }
         
