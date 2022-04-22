@@ -39,14 +39,13 @@ const authenticated_menu=[
     {label:"Logout",function:"logout()", home:"Logout"},
     
     //This menu item allows the user to add additional users. Note the "roles" property of the object. Only users with the role of "manager", "owner", or "administrator" will see this menu item. User roles are not heirachical. All user types you wish to see a menu item must be listed in the elements of the array.
-    {label:"Add Employee",function:"navigate({fn:'create_account'})", roles:["manager","owner","administrator"]}, 
+    {label:"Add User",function:"navigate({fn:'create_account'})", roles:["manager","owner","administrator"]}, 
 
     {label:"Task List",function:"navigate({fn:'show_task_list'})"},
-    {label:"Employee List",function:"navigate({fn:'employee_list'})"},
     {
         label: "Admin Tools", id: "menu2", roles: ["manager", "owner", "administrator"], menu:[
         { label: "Update User", function: "update_user()", panel: "update_user" },
-            { label: "Student Information", function: "navigate({fn:'show_student_rotation'})", roles: ["manager", "owner", "administrator"] },
+            { label: "Student Information", function: "navigate({fn:'admin_data'})", roles: ["manager", "owner", "administrator"] },
     ]
     },
     {
